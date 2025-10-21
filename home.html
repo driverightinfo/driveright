@@ -554,19 +554,27 @@
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 0.8rem;
             border: 2px solid #e2e8f0;
             border-radius: 10px;
             font-size: 1rem;
             transition: border-color 0.3s;
+            font-family: inherit;
         }
 
         .form-group input:focus,
-        .form-group textarea:focus {
+        .form-group textarea:focus,
+        .form-group select:focus {
             outline: none;
             border-color: #3b82f6;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            background: white;
         }
 
         .form-group textarea {
@@ -690,7 +698,7 @@
                     <a href="tel:0196550285">
                         <i data-lucide="phone"></i>
                         <span>(019) 655 0285</span>
-                        <span>(ZAHIN)</span>
+                        <span>(AZHAR)</span>
                     </a>
                 </div>
             </div>
@@ -700,7 +708,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1 data-lang-en="Get Your Driving License Today" data-lang-ms="Dapatkan Lesen Memandu Anda Hari Ini">Get Your Driving License Today</h1>
+            <h1 data-lang-en="Get Your Driving License Today!" data-lang-ms="Dapatkan Lesen Memandu Anda Hari Ini!">Get Your Driving License Today!</h1>
             <p data-lang-en="Professional guidance through every step of the process. Fast, reliable, and stress-free." data-lang-ms="Bimbingan profesional melalui setiap langkah proses. Pantas, boleh dipercayai, dan bebas tekanan.">Professional guidance through every step of the process. Fast, reliable, and stress-free.</p>
             <div class="cta-buttons">
                 <a href="#contact" class="btn btn-primary">
@@ -749,8 +757,8 @@
                 </div>
                 <h3 data-lang-en="Dedicated Support" data-lang-ms="Sokongan Berdedikasi">Dedicated Support</h3>
                 <p data-lang-en="Have questions? Our support team is always ready to assist you throughout your journey." data-lang-ms="Ada soalan? Pasukan sokongan kami sentiasa bersedia membantu anda sepanjang perjalanan anda.">Have questions? Our support team is always ready to assist you throughout your journey.</p>
-            </div>
-        </div> -->
+            </div> -->
+        </div>
     </section>
 
     <!-- License Classes -->
@@ -772,7 +780,7 @@
                     <li><i data-lucide="check"></i> <span data-lang-en="JPJ Test" data-lang-ms="Ujian JPJ">JPJ Test</span></li>
                     <li><i data-lucide="check"></i> <span data-lang-en="License P" data-lang-ms="Lesen P">License P</span></li>
                 </ul>
-                <a href="#contact" class="btn-license">
+                <a href="#contact" class="btn-license" data-license="B2">
                     <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
                 </a>
             </div>
@@ -812,7 +820,7 @@
                     <li><i data-lucide="check"></i> <span data-lang-en="JPJ Test" data-lang-ms="Ujian JPJ">JPJ Test</span></li>
                     <li><i data-lucide="check"></i> <span data-lang-en="License P" data-lang-ms="Lesen P">License P</span></li>
                 </ul>
-                <a href="#contact" class="btn-license">
+                <a href="#contact" class="btn-license" data-license="D Manual">
                     <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
                 </a>
             </div>
@@ -832,7 +840,7 @@
                     <li><i data-lucide="check"></i> <span data-lang-en="JPJ Test" data-lang-ms="Ujian JPJ">JPJ Test</span></li>
                     <li><i data-lucide="check"></i> <span data-lang-en="License P" data-lang-ms="Lesen P">License P</span></li>
                 </ul>
-                <a href="#contact" class="btn-license">
+                <a href="#contact" class="btn-license" data-license="D Auto">
                     <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
                 </a>
             </div>
@@ -849,7 +857,7 @@
                     <li><i data-lucide="check"></i> <span data-lang-en="QTI - Assessment" data-lang-ms="QTI - Penilaian">QTI - Assessment</span></li>
                     <li><i data-lucide="check"></i> <span data-lang-en="JPJ Test" data-lang-ms="Ujian JPJ">JPJ Test</span></li>
                 </ul>
-                <a href="#contact" class="btn-license">
+                <a href="#contact" class="btn-license" data-license="E Rigid">
                     <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
                 </a>
             </div>
@@ -866,7 +874,7 @@
                     <li><i data-lucide="check"></i> <span data-lang-en="QTI - Assessment" data-lang-ms="QTI - Penilaian">QTI - Assessment</span></li>
                     <li><i data-lucide="check"></i> <span data-lang-en="JPJ Test" data-lang-ms="Ujian JPJ">JPJ Test</span></li>
                 </ul>
-                <a href="#contact" class="btn-license">
+                <a href="#contact" class="btn-license" data-license="E Articulated">
                     <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
                 </a>
             </div>
@@ -882,7 +890,7 @@
                     <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
                     <li><i data-lucide="check"></i> <span data-lang-en="Vocational License" data-lang-ms="Lesen Vokasional">Vocational License</span></li>
                 </ul>
-                <a href="#contact" class="btn-license">
+                <a href="#contact" class="btn-license" data-license="PSV">
                     <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
                 </a>
             </div> -->
@@ -898,8 +906,8 @@
                     <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
                     <li><i data-lucide="check"></i> <span data-lang-en="Vocational License" data-lang-ms="Lesen Vokasional">Vocational License</span></li>
                 </ul>
-                <b><p class="license-note">*<span data-lang-en="For E license class holder please contact for more information." data-lang-ms="Untuk pemegang lesen kelas E sila hubungi untuk maklumat lanjut.">For E license class holder please contact for more information.</span></b></p>
-                <a href="#contact" class="btn-license">
+                <b><p class="license-note">*<span data-lang-en="For E license class holder please contact for more information." data-lang-ms="Untuk pemegang lesen kelas E sila hubungi untuk maklumat lanjut.">For E license class holder please contact for more information.</span></p></b>
+                <a href="#contact" class="btn-license" data-license="GDL">
                     <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
                 </a>
             </div>
@@ -1017,22 +1025,32 @@
 
             <div class="contact-form">
                 <h3 style="color: #1e3a8a; margin-bottom: 1.5rem;" data-lang-en="Send Us a Message" data-lang-ms="Hantar Mesej Kepada Kami">Send Us a Message</h3>
-                <form>
+                <form action="https://formspree.io/f/mzzrgegv" method="POST">
                     <div class="form-group">
                         <label data-lang-en="Your Name" data-lang-ms="Nama Anda">Your Name</label>
-                        <input type="text" data-lang-en-placeholder="Enter your name" data-lang-ms-placeholder="Masukkan nama anda" placeholder="Enter your name" required>
+                        <input type="text" name="full_name" data-lang-en-placeholder="Enter your name" data-lang-ms-placeholder="Masukkan nama anda" placeholder="Enter your name" required>
                     </div>
                     <div class="form-group">
                         <label data-lang-en="Phone Number" data-lang-ms="Nombor Telefon">Phone Number</label>
-                        <input type="tel" data-lang-en-placeholder="Enter your phone" data-lang-ms-placeholder="Masukkan nombor telefon anda" placeholder="Enter your phone" required>
+                        <input type="tel" name="phone" data-lang-en-placeholder="Enter your phone" data-lang-ms-placeholder="Masukkan nombor telefon anda" placeholder="Enter your phone" required>
                     </div>
                     <div class="form-group">
-                        <label data-lang-en="Email" data-lang-ms="Emel">Email</label>
-                        <input type="email" data-lang-en-placeholder="Enter your email" data-lang-ms-placeholder="Masukkan emel anda" placeholder="Enter your email">
+                        <label data-lang-en="License Type" data-lang-ms="Jenis Lesen">License Type</label>
+                        <select name="license" id="license-select" required>
+                            <option value="" data-lang-en="Select license type" data-lang-ms="Pilih jenis lesen">Select license type</option>
+                            <option value="B2">B2 - Motorcycle</option>
+                            <option value="B Full">B Full - Motorcycle</option>
+                            <option value="D Manual">D (Manual) - Motorcar</option>
+                            <option value="D Auto">D (Auto) - Motorcar</option>
+                            <option value="E Rigid">E (Rigid) - Lorry</option>
+                            <option value="E Articulated">E (Articulated) - Lorry</option>
+                            <option value="PSV">PSV - Public Service Vehicle</option>
+                            <option value="GDL">GDL - Goods Driving License</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label data-lang-en="Message" data-lang-ms="Mesej">Message</label>
-                        <textarea data-lang-en-placeholder="Tell us how we can help you..." data-lang-ms-placeholder="Beritahu kami bagaimana kami boleh membantu anda..." placeholder="Tell us how we can help you..."></textarea>
+                        <textarea name="message" data-lang-en-placeholder="Tell us how we can help you..." data-lang-ms-placeholder="Beritahu kami bagaimana kami boleh membantu anda..." placeholder="Tell us how we can help you..."></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%;">
                         <i data-lucide="send"></i>
@@ -1044,13 +1062,13 @@
     </section>
 
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/60196550285" class="btn-whatsapp" target="_blank">
+    <a href="https://wa.me/601156225263" class="btn-whatsapp" target="_blank">
         <i data-lucide="message-circle" size="28"></i>
     </a>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 DriveRight. All rights reserved.</p>
+        <p>&copy; 2025 Axiowise. All rights reserved.</p>
     </footer>
 
     <script>
@@ -1099,6 +1117,18 @@
                 }
             });
 
+            // Update select dropdown first option
+            const selectElement = document.getElementById('license-select');
+            if (selectElement) {
+                const firstOption = selectElement.querySelector('option[value=""]');
+                if (firstOption) {
+                    const selectText = firstOption.getAttribute('data-lang-' + lang);
+                    if (selectText) {
+                        firstOption.textContent = selectText;
+                    }
+                }
+            }
+
             // Re-initialize Lucide icons
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
@@ -1142,16 +1172,47 @@
                 });
             });
 
+            // License selection functionality
+            document.querySelectorAll('.btn-license').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const licenseType = this.getAttribute('data-license');
+                    const selectElement = document.getElementById('license-select');
+                    
+                    if (licenseType && selectElement) {
+                        // Set the dropdown value
+                        selectElement.value = licenseType;
+                        
+                        // Scroll to contact section
+                        const contactSection = document.getElementById('contact');
+                        if (contactSection) {
+                            contactSection.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                        
+                        // Optional: Add a brief highlight effect to the dropdown
+                        selectElement.style.borderColor = '#3b82f6';
+                        selectElement.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.2)';
+                        setTimeout(() => {
+                            selectElement.style.borderColor = '#e2e8f0';
+                            selectElement.style.boxShadow = 'none';
+                        }, 1500);
+                    }
+                });
+            });
+
             // Form submission handler
             const form = document.querySelector('form');
             if (form) {
                 form.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const message = currentLang === 'en' 
-                        ? 'Thank you for your message! We will contact you shortly.'
-                        : 'Terima kasih atas mesej anda! Kami akan menghubungi anda tidak lama lagi.';
-                    alert(message);
-                    this.reset();
+                    // Formspree will handle the submission
+                    // Show a loading state or confirmation message
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.querySelector('span').textContent;
+                    submitBtn.querySelector('span').textContent = currentLang === 'en' ? 'Sending...' : 'Menghantar...';
+                    submitBtn.disabled = true;
                 });
             }
         });
