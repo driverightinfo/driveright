@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DriveRight - Get Your Driving License Today</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+      <script src="https://unpkg.com/lucide@latest"></script>
+      <script>
+        lucide.createIcons();
+      </script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script> -->
     <style>
         * {
             margin: 0;
@@ -37,6 +41,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .logo {
@@ -214,6 +220,136 @@
             background: #f8fafc;
         }
 
+        /* License Classes */
+        .license-classes {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .license-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .license-card {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.3s;
+            position: relative;
+            border: 2px solid transparent;
+        }
+
+        .license-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+            border-color: #3b82f6;
+        }
+
+        .license-card.featured {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-color: #3b82f6;
+        }
+
+        .vocational-badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+
+        .license-name span {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .license-note {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-style: italic;
+            margin: 1rem 0;
+            padding: 0.8rem;
+            background: #fef3c7;
+            border-radius: 8px;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .license-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .license-type {
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .license-name {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #1e3a8a;
+            margin-bottom: 0;
+        }
+
+        .license-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 2rem 0;
+        }
+
+        .license-features li {
+            display: flex;
+            align-items: start;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        .license-features li i {
+            color: #3b82f6;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .btn-license {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: white;
+            color: #1e3a8a;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s;
+        }
+
+        .btn-license:hover {
+            background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+            color: white;
+            border-color: #3b82f6;
+        }
+
+        .license-card.featured .btn-license:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.3);
+        }
+
         .section-title {
             text-align: center;
             font-size: 2.5rem;
@@ -329,7 +465,7 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
+            gap: 2rem;
             text-align: center;
         }
 
@@ -505,12 +641,16 @@
                 flex-direction: column;
                 gap: 0.5rem;
                 align-items: flex-end;
+                font-size: 0.85rem;
             }
 
             .header-right {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: flex-end;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .lang-switcher {
+                order: -1;
             }
 
             .cta-buttons {
@@ -520,6 +660,10 @@
             .btn {
                 width: 100%;
                 justify-content: center;
+            }
+
+            .logo {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -534,17 +678,19 @@
             </div>
             <div class="header-right">
                 <div class="lang-switcher">
-                    <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
-                    <button class="lang-btn" onclick="switchLanguage('ms')">BM</button>
+                    <button class="lang-btn active" id="btn-en">EN</button>
+                    <button class="lang-btn" id="btn-ms">BM</button>
                 </div>
                 <div class="contact-quick">
                     <a href="tel:01156225263">
                         <i data-lucide="phone"></i>
                         <span>(011) 5622 5263</span>
+                        <span>(ZAHIN)</span>
                     </a>
                     <a href="tel:0196550285">
                         <i data-lucide="phone"></i>
                         <span>(019) 655 0285</span>
+                        <span>(ZAHIN)</span>
                     </a>
                 </div>
             </div>
@@ -603,7 +749,160 @@
                 </div>
                 <h3 data-lang-en="Dedicated Support" data-lang-ms="Sokongan Berdedikasi">Dedicated Support</h3>
                 <p data-lang-en="Have questions? Our support team is always ready to assist you throughout your journey." data-lang-ms="Ada soalan? Pasukan sokongan kami sentiasa bersedia membantu anda sepanjang perjalanan anda.">Have questions? Our support team is always ready to assist you throughout your journey.</p>
+            </div>
+        </div> -->
+    </section>
+
+    <!-- License Classes -->
+    <section class="license-classes">
+        <h2 class="section-title" data-lang-en="License Classes" data-lang-ms="Kelas Lesen">License Classes</h2>
+        <div class="license-grid">
+            <!-- B2 Motorcycle -->
+            <div class="license-card">
+                <div class="license-header">
+                    <div class="license-type" data-lang-en="Motorcycle" data-lang-ms="Motosikal">Motorcycle</div>
+                    <h3 class="license-name">B2</h3>
+                </div>
+                <ul class="license-features">
+                    <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="Computer Test Registration" data-lang-ms="Pendaftaran Ujian Komputer">Computer Test Registration</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="L License" data-lang-ms="Lesen L">L License</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="Driving Learning Class" data-lang-ms="Kelas Pembelajaran Memandu">Driving Learning Class</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="QTI - Assessment" data-lang-ms="QTI - Penilaian">QTI - Assessment</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="JPJ Test" data-lang-ms="Ujian JPJ">JPJ Test</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="License P" data-lang-ms="Lesen P">License P</span></li>
+                </ul>
+                <a href="#contact" class="btn-license">
+                    <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
+                </a>
+            </div>
+
+            <!-- B Full Motorcycle -->
+            <!-- <div class="license-card">
+                <div class="license-header">
+                    <div class="license-type" data-lang-en="Motorcycle" data-lang-ms="Motosikal">Motorcycle</div>
+                    <h3 class="license-name">B Full</h3>
+                </div>
+                <ul class="license-features">
+                    <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="Computer Test Registration" data-lang-ms="Pendaftaran Ujian Komputer">Computer Test Registration</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="L License" data-lang-ms="Lesen L">L License</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="Driving Learning Class" data-lang-ms="Kelas Pembelajaran Memandu">Driving Learning Class</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="QTI - Assessment" data-lang-ms="QTI - Penilaian">QTI - Assessment</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="JPJ Test" data-lang-ms="Ujian JPJ">JPJ Test</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="License P" data-lang-ms="Lesen P">License P</span></li>
+                </ul>
+                <a href="#contact" class="btn-license">
+                    <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
+                </a>
             </div> -->
+
+            <!-- D Manual -->
+            <div class="license-card">
+                <div class="license-header">
+                    <div class="license-type" data-lang-en="Motorcar" data-lang-ms="Kereta">Motorcar</div>
+                    <h3 class="license-name">D (Manual)</h3>
+                </div>
+                <ul class="license-features">
+                    <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="Computer Test Registration" data-lang-ms="Pendaftaran Ujian Komputer">Computer Test Registration</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="L License" data-lang-ms="Lesen L">L License</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="Driving Learning Class" data-lang-ms="Kelas Pembelajaran Memandu">Driving Learning Class</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="QTI - Assessment" data-lang-ms="QTI - Penilaian">QTI - Assessment</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="JPJ Test" data-lang-ms="Ujian JPJ">JPJ Test</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="License P" data-lang-ms="Lesen P">License P</span></li>
+                </ul>
+                <a href="#contact" class="btn-license">
+                    <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
+                </a>
+            </div>
+
+            <!-- D Auto -->
+            <div class="license-card">
+                <div class="license-header">
+                    <div class="license-type" data-lang-en="Motorcar" data-lang-ms="Kereta">Motorcar</div>
+                    <h3 class="license-name">D (Auto)</h3>
+                </div>
+                <ul class="license-features">
+                    <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="Computer Test Registration" data-lang-ms="Pendaftaran Ujian Komputer">Computer Test Registration</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="L License" data-lang-ms="Lesen L">L License</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="Driving Learning Class" data-lang-ms="Kelas Pembelajaran Memandu">Driving Learning Class</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="QTI - Assessment" data-lang-ms="QTI - Penilaian">QTI - Assessment</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="JPJ Test" data-lang-ms="Ujian JPJ">JPJ Test</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="License P" data-lang-ms="Lesen P">License P</span></li>
+                </ul>
+                <a href="#contact" class="btn-license">
+                    <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
+                </a>
+            </div>
+
+            <!-- E Rigid -->
+            <div class="license-card">
+                <div class="license-header">
+                    <div class="license-type" data-lang-en="Lorry" data-lang-ms="Lori">Lorry</div>
+                    <h3 class="license-name" data-lang-en="E (Rigid)" data-lang-ms="E (Kejur)">E (Rigid)</h3>
+                </div>
+                <ul class="license-features">
+                    <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="Driving Learning Class" data-lang-ms="Kelas Pembelajaran Memandu">Driving Learning Class</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="QTI - Assessment" data-lang-ms="QTI - Penilaian">QTI - Assessment</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="JPJ Test" data-lang-ms="Ujian JPJ">JPJ Test</span></li>
+                </ul>
+                <a href="#contact" class="btn-license">
+                    <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
+                </a>
+            </div>
+
+            <!-- E Articulated -->
+            <div class="license-card">
+                <div class="license-header">
+                    <div class="license-type" data-lang-en="Lorry" data-lang-ms="Lori">Lorry</div>
+                    <h3 class="license-name" data-lang-en="E (Articulated)" data-lang-ms="E (Bersendi)">E (Articulated)</h3>
+                </div>
+                <ul class="license-features">
+                    <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="Driving Learning Class" data-lang-ms="Kelas Pembelajaran Memandu">Driving Learning Class</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="QTI - Assessment" data-lang-ms="QTI - Penilaian">QTI - Assessment</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="JPJ Test" data-lang-ms="Ujian JPJ">JPJ Test</span></li>
+                </ul>
+                <a href="#contact" class="btn-license">
+                    <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
+                </a>
+            </div>
+
+            <!-- PSV -->
+            <!-- <div class="license-card">
+                <div class="vocational-badge" data-lang-en="Vocational License" data-lang-ms="Lesen Vokasional">Vocational License</div>
+                <div class="license-header">
+                    <div class="license-type" data-lang-en="Taxi / E-Hailing / Bus / Van" data-lang-ms="Teksi / E-Hailing / Bas / Van">Taxi / E-Hailing / Bus / Van</div>
+                    <h3 class="license-name">PSV - <span data-lang-en="Public Service Vehicle" data-lang-ms="Kenderaan Perkhidmatan Awam">Public Service Vehicle</span></h3>
+                </div>
+                <ul class="license-features">
+                    <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="Vocational License" data-lang-ms="Lesen Vokasional">Vocational License</span></li>
+                </ul>
+                <a href="#contact" class="btn-license">
+                    <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
+                </a>
+            </div> -->
+
+            <!-- GDL -->
+            <div class="license-card">
+                <div class="vocational-badge" data-lang-en="Vocational License" data-lang-ms="Lesen Vokasional">Vocational License</div>
+                <div class="license-header">
+                    <div class="license-type" data-lang-en="Lorry" data-lang-ms="Lori">Lorry</div>
+                    <h3 class="license-name">GDL - <span data-lang-en="Goods Driving License" data-lang-ms="Lesen Memandu Barang">Goods Driving License</span></h3>
+                </div>
+                <ul class="license-features">
+                    <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
+                    <li><i data-lucide="check"></i> <span data-lang-en="Vocational License" data-lang-ms="Lesen Vokasional">Vocational License</span></li>
+                </ul>
+                <b><p class="license-note">*<span data-lang-en="For E license class holder please contact for more information." data-lang-ms="Untuk pemegang lesen kelas E sila hubungi untuk maklumat lanjut.">For E license class holder please contact for more information.</span></b></p>
+                <a href="#contact" class="btn-license">
+                    <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -653,21 +952,24 @@
                 <div class="step-number">3</div>
                 <div class="step-content">
                     <h3 data-lang-en="Training & Testing" data-lang-ms="Latihan & Ujian">Training & Testing</h3>
-                    <p data-lang-en="Professional instructors prepare you for both the written and practical tests." data-lang-ms="Jurulatih profesional menyediakan anda untuk ujian bertulis dan praktikal.">Professional instructors prepare you for both the written and practical tests.</p>
+                    <p data-lang-en="Professional instructors prepares you for the practical tests." data-lang-ms="Jurulatih profesional menyediakan anda untuk ujian praktikal.">Professional instructors prepares you for the practical tests.</p>
                 </div>
             </div>
 
             <div class="step">
                 <div class="step-number">4</div>
                 <div class="step-content">
-                    <h3 data-lang-en="License Collection" data-lang-ms="Pengambilan Lesen">License Collection</h3>
+                    <h3 data-lang-en="License Issuance" data-lang-ms="Pengeluaran Lesen">License Issuance</h3>
                     <p data-lang-en="We accompany you to the final steps to ensure you receive your license successfully." data-lang-ms="Kami menemani anda ke langkah terakhir untuk memastikan anda menerima lesen dengan jayanya.">We accompany you to the final steps to ensure you receive your license successfully.</p>
                 </div>
             </div>
         </div>
 
         <div class="note">
-            <strong data-lang-en="Note:" data-lang-ms="Nota:">Note:</strong> <span data-lang-en="For E license class holders, please contact us for more information." data-lang-ms="Untuk pemegang lesen kelas E, sila hubungi kami untuk maklumat lanjut.">For E license class holders, please contact us for more information.</span>
+            <strong data-lang-en="Note:" data-lang-ms="Nota:">Note:</strong> &bull; <span data-lang-en="For Malaysian citizens, the license will only be available through the MyJPJ app." data-lang-ms="Untuk warganegara, lesen akan diperoleh melalui aplikasi MyJPJ sahaja.">For Malaysian citizens, the license will only be available through the MyJPJ app.</span>
+<br>
+&emsp;&emsp;&ensp;&nbsp;&bull;
+	  <span data-lang-en="A physical license is only issued to non-citizens." data-lang-ms="Lesen fizikal hanya diberikan kepada bukan warganegara.">A physical license is only issued to non-citizens.</span>
         </div>
     </section>
 
@@ -752,63 +1054,106 @@
     </footer>
 
     <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-
         // Language switching functionality
         let currentLang = 'en';
 
         function switchLanguage(lang) {
+            console.log('Switching to:', lang);
             currentLang = lang;
             
             // Update button states
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
-            event.target.classList.add('active');
+            
+            if (lang === 'en') {
+                document.getElementById('btn-en').classList.add('active');
+            } else {
+                document.getElementById('btn-ms').classList.add('active');
+            }
 
-            // Update all elements with language attributes
+            // Update all text elements
             document.querySelectorAll('[data-lang-en]').forEach(element => {
-                const text = element.getAttribute(`data-lang-${lang}`);
-                if (text) {
-                    element.textContent = text;
+                const newText = element.getAttribute('data-lang-' + lang);
+                if (newText) {
+                    // Check if element contains an icon
+                    const icon = element.querySelector('i[data-lucide]');
+                    if (icon) {
+                        // Store icon info
+                        const iconName = icon.getAttribute('data-lucide');
+                        const iconSize = icon.getAttribute('width') || '24';
+                        // Update with new text and recreate icon
+                        element.innerHTML = '<i data-lucide="' + iconName + '" width="' + iconSize + '" height="' + iconSize + '"></i> ' + newText;
+                    } else {
+                        element.textContent = newText;
+                    }
                 }
             });
 
             // Update form placeholders
-            document.querySelectorAll('[data-lang-en-placeholder]').forEach(element => {
-                const placeholder = element.getAttribute(`data-lang-${lang}-placeholder`);
-                if (placeholder) {
-                    element.placeholder = placeholder;
+            document.querySelectorAll('input, textarea').forEach(element => {
+                const placeholderAttr = 'data-lang-' + lang + '-placeholder';
+                const newPlaceholder = element.getAttribute(placeholderAttr);
+                if (newPlaceholder) {
+                    element.placeholder = newPlaceholder;
                 }
             });
 
-            // Re-initialize icons after text change
-            lucide.createIcons();
+            // Re-initialize Lucide icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
         }
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Lucide icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
 
-        // Form submission handler
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const message = currentLang === 'en' 
-                ? 'Thank you for your message! We will contact you shortly.'
-                : 'Terima kasih atas mesej anda! Kami akan menghubungi anda tidak lama lagi.';
-            alert(message);
-            this.reset();
+            // Add event listeners to language buttons
+            const btnEn = document.getElementById('btn-en');
+            const btnMs = document.getElementById('btn-ms');
+            
+            if (btnEn) {
+                btnEn.addEventListener('click', function() {
+                    switchLanguage('en');
+                });
+            }
+
+            if (btnMs) {
+                btnMs.addEventListener('click', function() {
+                    switchLanguage('ms');
+                });
+            }
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Form submission handler
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const message = currentLang === 'en' 
+                        ? 'Thank you for your message! We will contact you shortly.'
+                        : 'Terima kasih atas mesej anda! Kami akan menghubungi anda tidak lama lagi.';
+                    alert(message);
+                    this.reset();
+                });
+            }
         });
     </script>
 </body>
