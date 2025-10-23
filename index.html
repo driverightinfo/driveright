@@ -3,1224 +3,700 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DriveRight - Get Your Driving License Today</title>
-
-	    <!-- Favicon -->    
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
-	
-      <script src="https://unpkg.com/lucide@latest"></script>
-      <script>
-        lucide.createIcons();
-      </script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script> -->
+    <title>Driving School Management</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc;
         }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        .container-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
         }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .lang-switcher {
-            display: flex;
-            gap: 0.5rem;
-            background: rgba(255,255,255,0.1);
-            padding: 0.3rem;
-            border-radius: 20px;
-        }
-
-        .lang-btn {
-            background: transparent;
-            color: white;
-            border: none;
-            padding: 0.4rem 1rem;
-            border-radius: 15px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .lang-btn.active {
-            background: white;
-            color: #1e3a8a;
-        }
-
-        .lang-btn:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        .lang-btn.active:hover {
-            background: white;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .contact-quick {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .contact-quick a {
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.9rem;
-            transition: transform 0.2s;
-        }
-
-        .contact-quick a:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            color: white;
-            padding: 6rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
-            opacity: 0.5;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
-            animation: fadeInUp 0.8s ease-out 0.2s backwards;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.8s ease-out 0.4s backwards;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .btn-primary {
-            background: white;
-            color: #1e3a8a;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-
-        .btn-secondary:hover {
-            background: white;
-            color: #1e3a8a;
-        }
-
-        .btn-whatsapp {
-            background: #25D366;
-            color: white;
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            padding: 1rem;
-            border-radius: 50%;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            z-index: 1000;
-            animation: pulse 2s infinite;
-        }
-
-        .btn-whatsapp:hover {
-            transform: scale(1.1);
-        }
-
-        /* Features */
-        .features {
-            padding: 5rem 2rem;
-            background: #f8fafc;
-        }
-
-        /* License Classes */
-        .license-classes {
-            padding: 5rem 2rem;
-            background: white;
-        }
-
-        .license-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .license-card {
-            background: #f8fafc;
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.3s;
-            position: relative;
-            border: 2px solid transparent;
-        }
-
-        .license-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-            border-color: #3b82f6;
-        }
-
-        .license-card.featured {
-            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-            border-color: #3b82f6;
-        }
-
-        .vocational-badge {
-            position: absolute;
-            top: -12px;
-            right: 20px;
-            background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
-            color: white;
-            padding: 0.4rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
-        }
-
-        .license-name span {
-            font-size: 1rem;
+        .tab-button.active {
+            border-bottom: 3px solid #10B981; /* Emerald 500 */
+            color: #10B981;
             font-weight: 600;
         }
-
-        .license-note {
-            font-size: 0.85rem;
-            color: #64748b;
-            font-style: italic;
-            margin: 1rem 0;
-            padding: 0.8rem;
-            background: #fef3c7;
-            border-radius: 8px;
-            border-left: 3px solid #f59e0b;
-        }
-
-        .license-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .license-type {
-            color: #64748b;
-            font-size: 0.9rem;
-            font-weight: 600;
+        .table-header th {
+            padding: 0.75rem 1.5rem;
+            text-align: left;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-        }
-
-        .license-name {
-            font-size: 2rem;
-            font-weight: 900;
-            color: #1e3a8a;
-            margin-bottom: 0;
-        }
-
-        .license-features {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 2rem 0;
-        }
-
-        .license-features li {
-            display: flex;
-            align-items: start;
-            gap: 0.8rem;
-            margin-bottom: 1rem;
-            color: #475569;
-            font-size: 0.95rem;
-        }
-
-        .license-features li i {
-            color: #3b82f6;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .btn-license {
-            display: block;
-            width: 100%;
-            padding: 1rem;
-            background: white;
-            color: #1e3a8a;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 12px;
-            font-weight: 700;
-            border: 2px solid #e2e8f0;
-            transition: all 0.3s;
-        }
-
-        .btn-license:hover {
-            background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
-            color: white;
-            border-color: #3b82f6;
-        }
-
-        .license-card.featured .btn-license:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.3);
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 3rem;
-            color: #1e3a8a;
-        }
-
-        .features-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
-            transition: all 0.3s;
-            text-align: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
-        }
-
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            color: white;
-        }
-
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #1e3a8a;
-        }
-
-        .feature-card p {
-            color: #64748b;
-            line-height: 1.7;
-        }
-
-        /* Process */
-        .process {
-            padding: 5rem 2rem;
-            background: white;
-        }
-
-        .process-steps {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .step {
-            display: flex;
-            gap: 2rem;
-            margin-bottom: 3rem;
-            align-items: flex-start;
-            opacity: 0;
-            animation: fadeInLeft 0.6s ease-out forwards;
-        }
-
-        .step:nth-child(1) { animation-delay: 0.1s; }
-        .step:nth-child(2) { animation-delay: 0.2s; }
-        .step:nth-child(3) { animation-delay: 0.3s; }
-        .step:nth-child(4) { animation-delay: 0.4s; }
-
-        .step-number {
-            min-width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 800;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-        }
-
-        .step-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            color: #1e3a8a;
-        }
-
-        .step-content p {
-            color: #64748b;
-            line-height: 1.7;
-        }
-
-        /* Stats */
-        .stats {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            color: white;
-        }
-
-        .stats-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .stat-item h3 {
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-item p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        /* Contact */
-        .contact {
-            padding: 5rem 2rem;
-            background: #f8fafc;
-        }
-
-        .contact-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: start;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            flex-shrink: 0;
-        }
-
-        .contact-item-content h4 {
-            color: #1e3a8a;
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-item-content p {
-            color: #64748b;
-            line-height: 1.6;
-        }
-
-        .contact-item-content a {
-            color: #3b82f6;
-            text-decoration: none;
-        }
-
-        .contact-form {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #1e3a8a;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #3b82f6;
-        }
-
-        .form-group select {
-            cursor: pointer;
-            background: white;
-        }
-
-        .form-group textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .note {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
-            padding: 1rem;
-            margin: 2rem 0;
-            border-radius: 8px;
-            font-size: 0.95rem;
-        }
-
-        /* Footer */
-        footer {
-            background: #1e293b;
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-quick {
-                flex-direction: column;
-                gap: 0.5rem;
-                align-items: flex-end;
-                font-size: 0.85rem;
-            }
-
-            .header-right {
-                width: 100%;
-                justify-content: space-between;
-            }
-
-            .lang-switcher {
-                order: -1;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .logo {
-                font-size: 1.5rem;
-            }
+            letter-spacing: 0.05em;
+            color: #4B5563; /* Gray 600 */
+            background-color: #F9FAFB;
         }
     </style>
 </head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <i data-lucide="car"></i>
-                DriveRight
-            </div>
-            <div class="header-right">
-                <div class="lang-switcher">
-                    <button class="lang-btn active" id="btn-en">EN</button>
-                    <button class="lang-btn" id="btn-ms">BM</button>
-                </div>
-                <div class="contact-quick">
-                    <a href="tel:01156225263">
-                        <i data-lucide="phone"></i>
-                        <span>(011) 5622 5263</span>
-                        <span>(ZAHIN)</span>
-                    </a>
-                    <a href="tel:0196550285">
-                        <i data-lucide="phone"></i>
-                        <span>(019) 655 0285</span>
-                        <span>(AZHAR)</span>
-                    </a>
-                </div>
-            </div>
+<body class="p-4 sm:p-8 min-h-screen">
+    <!-- Main Header -->
+    <div class="max-w-6xl mx-auto flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-bold text-gray-800">DriveRight Management</h1>
+        <button class="flex items-center space-x-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-150" onclick="openModal('settingsModal')">
+            <!-- Icon for Configuration (Lucide React gear equivalent using SVG) -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings">
+                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.78 1.48a2 2 0 0 0 .73 2.73l.15.08a2 2 0 0 1 1 1.73v.44a2 2 0 0 1-1 1.73l-.15.08a2 2 0 0 0-.73 2.73l.78 1.48a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 1-1.73v.18a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.78-1.48a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.73v-.44a2 2 0 0 1 1-1.73l.15-.08a2 2 0 0 0 .73-2.73l-.78-1.48a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/>
+            </svg>
+            <span>Configuration</span>
+        </button>
+    </div>
+    
+    <!-- Status Message Area -->
+    <div id="status-message" class="fixed top-0 left-0 right-0 p-4 z-50 transition-all duration-300 transform -translate-y-full"></div>
+
+    <!-- Main Container -->
+    <div class="max-w-6xl mx-auto bg-white rounded-xl container-card overflow-hidden">
+        
+        <!-- Tab Navigation -->
+        <div class="flex border-b border-gray-200">
+            <button id="tab-students" class="tab-button active flex-1 py-3 px-4 text-center text-gray-500 hover:bg-gray-50 transition duration-150" onclick="changeTab('students')">Students</button>
+            <button id="tab-payments" class="tab-button flex-1 py-3 px-4 text-center text-gray-500 hover:bg-gray-50 transition duration-150" onclick="changeTab('payments')">Payments</button>
         </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 data-lang-en="Get Your Driving License Today!" data-lang-ms="Dapatkan Lesen Memandu Anda Hari Ini!">Get Your Driving License Today!</h1>
-            <p data-lang-en="Professional guidance through every step of the process. Fast, reliable, and stress-free." data-lang-ms="Bimbingan profesional melalui setiap langkah proses. Pantas, boleh dipercayai, dan bebas tekanan.">Professional guidance through every step of the process. Fast, reliable, and stress-free.</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">
-                    <i data-lucide="calendar"></i>
-                    <span data-lang-en="Book Now" data-lang-ms="Tempah Sekarang">Book Now</span>
-                </a>
-                <a href="tel:01156225263" class="btn btn-secondary">
-                    <i data-lucide="phone-call"></i>
-                    <span data-lang-en="Call Us" data-lang-ms="Hubungi Kami">Call Us</span>
-                </a>
+        <!-- Students Tab Content -->
+        <div id="content-students" class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-800">Student List</h2>
+                <button class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-150" onclick="openModal('addStudentModal')">
+                    + Add New Student
+                </button>
             </div>
-        </div>
-    </section>
-
-    <!-- Features -->
-    <section class="features">
-        <h2 class="section-title" data-lang-en="Why Choose DriveRight?" data-lang-ms="Mengapa Pilih DriveRight?">Why Choose DriveRight?</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i data-lucide="zap" size="40"></i>
-                </div>
-                <h3 data-lang-en="Fast Processing" data-lang-ms="Pemprosesan Pantas">Fast Processing</h3>
-                <p data-lang-en="We expedite the application process so you get your license quicker than standard methods." data-lang-ms="Kami mempercepatkan proses permohonan supaya anda mendapat lesen dengan lebih cepat daripada kaedah standard.">We expedite the application process so you get your license quicker than standard methods.</p>
+            
+            <div class="mb-4">
+                <input type="text" id="student-search" oninput="filterStudents()" placeholder="Search by name or ID..." class="w-full p-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500">
             </div>
 
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i data-lucide="users" size="40"></i>
-                </div>
-                <h3 data-lang-en="Expert Guidance" data-lang-ms="Bimbingan Pakar">Expert Guidance</h3>
-                <p data-lang-en="Our professionals guide you through every step, from paperwork to the driving test." data-lang-ms="Profesional kami membimbing anda melalui setiap langkah, dari kertas kerja hingga ujian memandu.">Our professionals guide you through every step, from paperwork to the driving test.</p>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <i data-lucide="award" size="40"></i>
-                </div>
-                <h3 data-lang-en="95% Success Rate" data-lang-ms="Kadar Kejayaan 95%">95% Success Rate</h3>
-                <p data-lang-en="95% of our clients pass their driving test on the first attempt with our preparation." data-lang-ms="95% daripada klien kami lulus ujian memandu pada percubaan pertama dengan persediaan kami.">95% of our clients pass their driving test on the first attempt with our preparation.</p>
-            </div>
-
-            <!-- <div class="feature-card">
-                <div class="feature-icon">
-                    <i data-lucide="headphones" size="40"></i>
-                </div>
-                <h3 data-lang-en="Dedicated Support" data-lang-ms="Sokongan Berdedikasi">Dedicated Support</h3>
-                <p data-lang-en="Have questions? Our support team is always ready to assist you throughout your journey." data-lang-ms="Ada soalan? Pasukan sokongan kami sentiasa bersedia membantu anda sepanjang perjalanan anda.">Have questions? Our support team is always ready to assist you throughout your journey.</p>
-            </div> -->
-        </div>
-    </section>
-
-    <!-- License Classes -->
-    <section class="license-classes">
-        <h2 class="section-title" data-lang-en="License Classes" data-lang-ms="Kelas Lesen">License Classes</h2>
-        <div class="license-grid">
-            <!-- B2 Motorcycle -->
-            <div class="license-card">
-                <div class="license-header">
-                    <div class="license-type" data-lang-en="Motorcycle" data-lang-ms="Motosikal">Motorcycle</div>
-                    <h3 class="license-name">B2</h3>
-                </div>
-                <ul class="license-features">
-                    <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="Computer Test Registration" data-lang-ms="Pendaftaran Ujian Komputer">Computer Test Registration</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="L License" data-lang-ms="Lesen L">L License</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="Driving Learning Class" data-lang-ms="Kelas Pembelajaran Memandu">Driving Learning Class</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="QTI - Assessment" data-lang-ms="QTI - Penilaian">QTI - Assessment</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="JPJ Test" data-lang-ms="Ujian JPJ">JPJ Test</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="License P" data-lang-ms="Lesen P">License P</span></li>
-                </ul>
-                <a href="#contact" class="btn-license" data-license="B2">
-                    <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
-                </a>
-            </div>
-
-            <!-- B Full Motorcycle -->
-            <!-- <div class="license-card">
-                <div class="license-header">
-                    <div class="license-type" data-lang-en="Motorcycle" data-lang-ms="Motosikal">Motorcycle</div>
-                    <h3 class="license-name">B Full</h3>
-                </div>
-                <ul class="license-features">
-                    <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="Computer Test Registration" data-lang-ms="Pendaftaran Ujian Komputer">Computer Test Registration</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="L License" data-lang-ms="Lesen L">L License</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="Driving Learning Class" data-lang-ms="Kelas Pembelajaran Memandu">Driving Learning Class</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="QTI - Assessment" data-lang-ms="QTI - Penilaian">QTI - Assessment</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="JPJ Test" data-lang-ms="Ujian JPJ">JPJ Test</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="License P" data-lang-ms="Lesen P">License P</span></li>
-                </ul>
-                <a href="#contact" class="btn-license">
-                    <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
-                </a>
-            </div> -->
-
-            <!-- D Manual -->
-            <div class="license-card">
-                <div class="license-header">
-                    <div class="license-type" data-lang-en="Motorcar" data-lang-ms="Kereta">Motorcar</div>
-                    <h3 class="license-name">D (Manual)</h3>
-                </div>
-                <ul class="license-features">
-                    <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="Computer Test Registration" data-lang-ms="Pendaftaran Ujian Komputer">Computer Test Registration</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="L License" data-lang-ms="Lesen L">L License</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="Driving Learning Class" data-lang-ms="Kelas Pembelajaran Memandu">Driving Learning Class</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="QTI - Assessment" data-lang-ms="QTI - Penilaian">QTI - Assessment</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="JPJ Test" data-lang-ms="Ujian JPJ">JPJ Test</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="License P" data-lang-ms="Lesen P">License P</span></li>
-                </ul>
-                <a href="#contact" class="btn-license" data-license="D Manual">
-                    <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
-                </a>
-            </div>
-
-            <!-- D Auto -->
-            <div class="license-card">
-                <div class="license-header">
-                    <div class="license-type" data-lang-en="Motorcar" data-lang-ms="Kereta">Motorcar</div>
-                    <h3 class="license-name">D (Auto)</h3>
-                </div>
-                <ul class="license-features">
-                    <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="Computer Test Registration" data-lang-ms="Pendaftaran Ujian Komputer">Computer Test Registration</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="L License" data-lang-ms="Lesen L">L License</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="Driving Learning Class" data-lang-ms="Kelas Pembelajaran Memandu">Driving Learning Class</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="QTI - Assessment" data-lang-ms="QTI - Penilaian">QTI - Assessment</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="JPJ Test" data-lang-ms="Ujian JPJ">JPJ Test</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="License P" data-lang-ms="Lesen P">License P</span></li>
-                </ul>
-                <a href="#contact" class="btn-license" data-license="D Auto">
-                    <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
-                </a>
-            </div>
-
-            <!-- E Rigid -->
-            <div class="license-card">
-                <div class="license-header">
-                    <div class="license-type" data-lang-en="Lorry" data-lang-ms="Lori">Lorry</div>
-                    <h3 class="license-name" data-lang-en="E (Rigid)" data-lang-ms="E (Kejur)">E (Rigid)</h3>
-                </div>
-                <ul class="license-features">
-                    <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="Driving Learning Class" data-lang-ms="Kelas Pembelajaran Memandu">Driving Learning Class</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="QTI - Assessment" data-lang-ms="QTI - Penilaian">QTI - Assessment</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="JPJ Test" data-lang-ms="Ujian JPJ">JPJ Test</span></li>
-                </ul>
-                <a href="#contact" class="btn-license" data-license="E Rigid">
-                    <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
-                </a>
-            </div>
-
-            <!-- E Articulated -->
-            <div class="license-card">
-                <div class="license-header">
-                    <div class="license-type" data-lang-en="Lorry" data-lang-ms="Lori">Lorry</div>
-                    <h3 class="license-name" data-lang-en="E (Articulated)" data-lang-ms="E (Bersendi)">E (Articulated)</h3>
-                </div>
-                <ul class="license-features">
-                    <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="Driving Learning Class" data-lang-ms="Kelas Pembelajaran Memandu">Driving Learning Class</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="QTI - Assessment" data-lang-ms="QTI - Penilaian">QTI - Assessment</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="JPJ Test" data-lang-ms="Ujian JPJ">JPJ Test</span></li>
-                </ul>
-                <a href="#contact" class="btn-license" data-license="E Articulated">
-                    <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
-                </a>
-            </div>
-
-            <!-- PSV -->
-            <!-- <div class="license-card">
-                <div class="vocational-badge" data-lang-en="Vocational License" data-lang-ms="Lesen Vokasional">Vocational License</div>
-                <div class="license-header">
-                    <div class="license-type" data-lang-en="Taxi / E-Hailing / Bus / Van" data-lang-ms="Teksi / E-Hailing / Bas / Van">Taxi / E-Hailing / Bus / Van</div>
-                    <h3 class="license-name">PSV - <span data-lang-en="Public Service Vehicle" data-lang-ms="Kenderaan Perkhidmatan Awam">Public Service Vehicle</span></h3>
-                </div>
-                <ul class="license-features">
-                    <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="Vocational License" data-lang-ms="Lesen Vokasional">Vocational License</span></li>
-                </ul>
-                <a href="#contact" class="btn-license" data-license="PSV">
-                    <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
-                </a>
-            </div> -->
-
-            <!-- GDL -->
-            <div class="license-card">
-                <div class="vocational-badge" data-lang-en="Vocational License" data-lang-ms="Lesen Vokasional">Vocational License</div>
-                <div class="license-header">
-                    <div class="license-type" data-lang-en="Lorry" data-lang-ms="Lori">Lorry</div>
-                    <h3 class="license-name">GDL - <span data-lang-en="Goods Driving License" data-lang-ms="Lesen Memandu Barang">Goods Driving License</span></h3>
-                </div>
-                <ul class="license-features">
-                    <li><i data-lucide="check"></i> <span data-lang-en="Course Registration" data-lang-ms="Pendaftaran Kursus">Course Registration</span></li>
-                    <li><i data-lucide="check"></i> <span data-lang-en="Vocational License" data-lang-ms="Lesen Vokasional">Vocational License</span></li>
-                </ul>
-                <b><p class="license-note">*<span data-lang-en="For E license class holder please contact for more information." data-lang-ms="Untuk pemegang lesen kelas E sila hubungi untuk maklumat lanjut.">For E license class holder please contact for more information.</span></p></b>
-                <a href="#contact" class="btn-license" data-license="GDL">
-                    <span data-lang-en="Choose" data-lang-ms="Pilih">Choose</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats -->
-    <section class="stats">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <h3>95%</h3>
-                <p data-lang-en="First-Time Pass Rate" data-lang-ms="Kadar Lulus Percubaan Pertama">First-Time Pass Rate</p>
-            </div>
-            <div class="stat-item">
-                <h3>100+</h3>
-                <p data-lang-en="Students Trained" data-lang-ms="Pelajar Terlatih">Students Trained</p>
-            </div>
-            <div class="stat-item">
-                <h3>10+</h3>
-                <p data-lang-en="Years Experience" data-lang-ms="Tahun Pengalaman">Years Experience</p>
-            </div>
-            <div class="stat-item">
-                <h3>5★</h3>
-                <p data-lang-en="Customer Rating" data-lang-ms="Penilaian Pelanggan">Customer Rating</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Process -->
-    <section class="process">
-        <h2 class="section-title" data-lang-en="Our Simple 4-Step Process" data-lang-ms="Proses Mudah 4 Langkah Kami">Our Simple 4-Step Process</h2>
-        <div class="process-steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3 data-lang-en="Initial Assessment" data-lang-ms="Penilaian Awal">Initial Assessment</h3>
-                    <p data-lang-en="We assess your needs and create a personalized plan for your license application." data-lang-ms="Kami menilai keperluan anda dan membuat pelan peribadi untuk permohonan lesen anda.">We assess your needs and create a personalized plan for your license application.</p>
-                </div>
-            </div>
-
-            <div class="step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3 data-lang-en="Document Preparation" data-lang-ms="Penyediaan Dokumen">Document Preparation</h3>
-                    <p data-lang-en="We help gather and prepare all necessary documents for a smooth application." data-lang-ms="Kami membantu mengumpul dan menyediakan semua dokumen yang diperlukan untuk permohonan yang lancar.">We help gather and prepare all necessary documents for a smooth application.</p>
-                </div>
-            </div>
-
-            <div class="step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h3 data-lang-en="Training & Testing" data-lang-ms="Latihan & Ujian">Training & Testing</h3>
-                    <p data-lang-en="Professional instructors prepares you for the practical tests." data-lang-ms="Jurulatih profesional menyediakan anda untuk ujian praktikal.">Professional instructors prepares you for the practical tests.</p>
-                </div>
-            </div>
-
-            <div class="step">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <h3 data-lang-en="License Issuance" data-lang-ms="Pengeluaran Lesen">License Issuance</h3>
-                    <p data-lang-en="We accompany you to the final steps to ensure you receive your license successfully." data-lang-ms="Kami menemani anda ke langkah terakhir untuk memastikan anda menerima lesen dengan jayanya.">We accompany you to the final steps to ensure you receive your license successfully.</p>
-                </div>
+            <!-- Student Table -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="table-header">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Course</th>
+                            <th>Fee</th>
+                            <th>Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-list-body" class="bg-white divide-y divide-gray-200">
+                        <!-- Initial loading state -->
+                        <tr><td colspan="6" class="text-center py-4 text-gray-500">Loading students...</td></tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 
-        <div class="note">
-            <strong data-lang-en="Note:" data-lang-ms="Nota:">Note:</strong> &bull; <span data-lang-en="For Malaysian citizens, the license will only be available through the MyJPJ app." data-lang-ms="Untuk warganegara, lesen akan diperoleh melalui aplikasi MyJPJ sahaja.">For Malaysian citizens, the license will only be available through the MyJPJ app.</span>
-<br>
-&emsp;&emsp;&ensp;&nbsp;&bull;
-	  <span data-lang-en="A physical license is only issued to non-citizens." data-lang-ms="Lesen fizikal hanya diberikan kepada bukan warganegara.">A physical license is only issued to non-citizens.</span>
-        </div>
-    </section>
-
-    <!-- Contact -->
-    <section class="contact" id="contact">
-        <h2 class="section-title" data-lang-en="Get In Touch" data-lang-ms="Hubungi Kami">Get In Touch</h2>
-        <div class="contact-content">
-            <div class="contact-info">
-                <h3 style="color: #1e3a8a; margin-bottom: 2rem;" data-lang-en="Contact Information" data-lang-ms="Maklumat Hubungan">Contact Information</h3>
-                
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i data-lucide="phone"></i>
-                    </div>
-                    <div class="contact-item-content">
-                        <h4 data-lang-en="Phone Numbers" data-lang-ms="Nombor Telefon">Phone Numbers</h4>
-                        <p><a href="tel:01156225263">(011) 5622 5263 (ZAHIN)</a></p>
-                        <p><a href="tel:0196550285">(019) 655 0285 &ensp;(AZHAR)</a></p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i data-lucide="mail"></i>
-                    </div>
-                    <div class="contact-item-content">
-                        <h4 data-lang-en="Email" data-lang-ms="Emel">Email</h4>
-                        <p><a href="mailto:driveright.info@gmail.com">driveright.info@gmail.com</a></p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon">
-                        <i data-lucide="map-pin"></i>
-                    </div>
-                    <div class="contact-item-content">
-                        <h4 data-lang-en="Location" data-lang-ms="Lokasi">Location</h4>
-                        <p>Akademi Memandu Gabungan Dunia<br>
-                        Lot 3204, Jalan Sungai Yu 9/2,<br>
-                        Jalan Kampung India Sungai Yu,<br>
-                        45500 Kuala Selangor, Selangor</p>
-                    </div>
-                </div>
+        <!-- Payments Tab Content -->
+        <div id="content-payments" class="p-6 hidden">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-800">Payment History</h2>
+                <button class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-150" onclick="openModal('addPaymentModal')">
+                    + Record New Payment
+                </button>
             </div>
+            
+            <div class="mb-4">
+                <input type="text" id="payment-search" oninput="filterPayments()" placeholder="Search by Student ID or Name..." class="w-full p-2 border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500">
+            </div>
+            
+            <!-- Payment Table -->
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="table-header">
+                        <tr>
+                            <th>Payment ID</th>
+                            <th>Student Name</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Method</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="payment-list-body" class="bg-white divide-y divide-gray-200">
+                        <!-- Initial loading state -->
+                        <tr><td colspan="6" class="text-center py-4 text-gray-500">Loading payments...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-            <div class="contact-form">
-                <h3 style="color: #1e3a8a; margin-bottom: 1.5rem;" data-lang-en="Send Us a Message" data-lang-ms="Hantar Mesej Kepada Kami">Send Us a Message</h3>
-                <form action="https://formspree.io/f/mzzrgegv" method="POST">
-                    <div class="form-group">
-                        <label data-lang-en="Your Name" data-lang-ms="Nama Anda">Your Name</label>
-                        <input type="text" name="full_name" data-lang-en-placeholder="Enter your name" data-lang-ms-placeholder="Masukkan nama anda" placeholder="Enter your name" required>
-                    </div>
-                    <div class="form-group">
-                        <label data-lang-en="Phone Number" data-lang-ms="Nombor Telefon">Phone Number</label>
-                        <input type="tel" name="phone" data-lang-en-placeholder="Enter your phone" data-lang-ms-placeholder="Masukkan nombor telefon anda" placeholder="Enter your phone" required>
-                    </div>
-                    <div class="form-group">
-                        <label data-lang-en="License Type" data-lang-ms="Jenis Lesen">License Type</label>
-                        <select name="license" id="license-select" required>
-                            <option value="" data-lang-en="Select license type" data-lang-ms="Pilih jenis lesen">Select license type</option>
-                            <option value="B2" data-lang-en="B2 - Motorcycle" data-lang-ms="B2 - Motosikal">B2 - Motorcycle</option>
-                            <!-- <option value="B Full">B Full - Motorcycle</option> -->
-                            <option value="D Manual" data-lang-en="D (Manual) - Motorcar" data-lang-ms="D (Manual) - Kereta">D (Manual) - Motorcar</option>
-                            <option value="D Auto" data-lang-en="D (Auto) - Motorcar" data-lang-ms="D (Auto) - Kereta">D (Auto) - Motorcar</option>
-                            <option value="E Rigid" data-lang-en="E (Rigid) - Lorry" data-lang-ms="E (Kejur) - Lori">E (Rigid) - Lorry</option>
-                            <option value="E Articulated" data-lang-en="E (Articulated) - Lorry" data-lang-ms="E (Bersendi) - Lori">E (Articulated) - Lorry</option>
-                            <!-- <option value="PSV">PSV - Public Service Vehicle</option> -->
-                            <option value="GDL" data-lang-en="GDL - Goods Driving License" data-lang-ms="GDL - Lesen Memandu Barang">GDL - Goods Driving License</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label data-lang-en="Message" data-lang-ms="Mesej">Message</label>
-                        <textarea name="message" data-lang-en-placeholder="Tell us how we can help you..." data-lang-ms-placeholder="Beritahu kami bagaimana kami boleh membantu anda..." placeholder="Tell us how we can help you..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">
-                        <i data-lucide="send"></i>
-                        <span data-lang-en="Send Message" data-lang-ms="Hantar Mesej">Send Message</span>
+    <!-- Modals -->
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50 items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg p-6">
+            <h3 class="text-xl font-bold mb-4 text-gray-800 flex items-center space-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wrench"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-2.45 2.45a1 1 0 0 0-1.4 0L12 21.3a1 1 0 0 1-1.4 0l-.7-.7a1 1 0 0 1 0-1.4l1.6-1.6a1 1 0 0 0 0-1.4l-3.77-3.77a6 6 0 0 1-7.94-7.94l2.45-2.45a1 1 0 0 0 0-1.4L10 2.7a1 1 0 0 1 1.4 0l.7.7a1 1 0 0 1 0 1.4l-1.6 1.6z"/></svg>
+                <span>Credentials & Setup</span>
+            </h3>
+            <form id="settings-form">
+                <div class="mb-4">
+                    <label for="webAppUrl" class="block text-sm font-semibold text-gray-700">Web App URL (For Writing)</label>
+                    <input type="url" id="webAppUrl" name="webAppUrl" required 
+                           placeholder="https://script.google.com/macros/s/..."
+                           class="mt-1 p-2 w-full border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500">
+                    <p class="text-xs text-gray-500 mt-1">This URL is used to send payment data to Google Sheets (the Apps Script URL).</p>
+                </div>
+                <div class="mb-6">
+                    <label for="sheetUrl" class="block text-sm font-semibold text-gray-700">Google Sheet URL (For Reading)</label>
+                    <input type="url" id="sheetUrl" name="sheetUrl" required 
+                           placeholder="https://docs.google.com/spreadsheets/d/..."
+                           class="mt-1 p-2 w-full border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500">
+                    <p class="text-xs text-gray-500 mt-1">The Student data will be fetched from this sheet.</p>
+                </div>
+                <div class="flex justify-end">
+                    <button type="submit" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition duration-150 flex items-center space-x-2" id="save-settings-submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                        <span>Save & Connect</span>
                     </button>
-                </form>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Add Student Modal (Kept the same) -->
+    <div id="addStudentModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50 items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg p-6">
+            <h3 class="text-xl font-bold mb-4">Add New Student</h3>
+            <form id="add-student-form">
+                <div class="mb-4">
+                    <label for="fullName" class="block text-sm font-medium text-gray-700">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required class="mt-1 p-2 w-full border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500">
+                </div>
+                <div class="mb-4">
+                    <label for="phoneNumber" class="block text-sm font-medium text-gray-700">Phone Number</label>
+                    <input type="text" id="phoneNumber" name="phoneNumber" required class="mt-1 p-2 w-full border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500">
+                </div>
+                <div class="mb-4">
+                    <label for="courseType" class="block text-sm font-medium text-gray-700">Course Type</label>
+                    <select id="courseType" name="courseType" required class="mt-1 p-2 w-full border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500">
+                        <option value="Standard">Standard Course</option>
+                        <option value="Premium">Premium Course</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label for="totalFee" class="block text-sm font-medium text-gray-700">Total Course Fee (RM)</label>
+                    <input type="number" step="0.01" id="totalFee" name="totalFee" required class="mt-1 p-2 w-full border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500">
+                </div>
+                <div class="flex justify-end space-x-3">
+                    <button type="button" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-lg transition duration-150" onclick="closeModal('addStudentModal')">Cancel</button>
+                    <button type="submit" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-150" id="add-student-submit">Add Student</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Payment Modal (Kept the same) -->
+    <div id="addPaymentModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50 items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-lg p-6">
+            <h3 class="text-xl font-bold mb-4">Record New Payment</h3>
+            <form id="add-payment-form">
+                <div class="mb-4">
+                    <label for="studentIdOrName" class="block text-sm font-medium text-gray-700">Student ID or Name</label>
+                    <select id="studentIdOrName" name="studentId" required class="mt-1 p-2 w-full border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500">
+                        <option value="" disabled selected>Select a Student...</option>
+                        <!-- Options filled by JavaScript -->
+                    </select>
+                    <p id="payment-balance-info" class="text-sm text-gray-500 mt-2 hidden"></p>
+                </div>
+                <div class="mb-4">
+                    <label for="paymentDate" class="block text-sm font-medium text-gray-700">Date of Payment</label>
+                    <input type="date" id="paymentDate" name="date" required class="mt-1 p-2 w-full border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500">
+                </div>
+                <div class="mb-4">
+                    <label for="paymentAmount" class="block text-sm font-medium text-gray-700">Amount Paid (RM)</label>
+                    <input type="number" step="0.01" id="paymentAmount" name="amount" required class="mt-1 p-2 w-full border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500">
+                </div>
+                <div class="mb-6">
+                    <label for="paymentMethod" class="block text-sm font-medium text-gray-700">Payment Method</label>
+                    <select id="paymentMethod" name="method" required class="mt-1 p-2 w-full border border-gray-300 rounded-lg focus:ring-emerald-500 focus:border-emerald-500">
+                        <option value="Cash">Cash</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                        <option value="Credit Card">Credit Card</option>
+                    </select>
+                </div>
+                <div class="flex justify-end space-x-3">
+                    <button type="button" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-lg transition duration-150" onclick="closeModal('addPaymentModal')">Cancel</button>
+                    <button type="submit" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-150" id="add-payment-submit">Record New Payment & Generate Receipt</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Receipt Modal (Kept the same) -->
+    <div id="receiptModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 hidden z-50 items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-4xl h-5/6 flex flex-col p-6">
+            <h3 class="text-xl font-bold mb-4 text-gray-800">Payment Receipt</h3>
+            <div class="flex-grow border border-gray-300 rounded-lg overflow-hidden mb-4">
+                <iframe id="receipt-iframe" class="w-full h-full" frameborder="0"></iframe>
+            </div>
+            <div class="flex justify-end">
+                <button type="button" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-150" onclick="closeModal('receiptModal')">Close</button>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/601156225263" class="btn-whatsapp" target="_blank">
-        <i data-lucide="message-circle" size="28"></i>
-    </a>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Axiowise. All rights reserved.</p>
-    </footer>
 
     <script>
-        // Language switching functionality
-        let currentLang = 'en';
+        // Use a mutable variable instead of const so it can be updated by the settings form.
+        let WEB_APP_URL = '';
+        let SHEET_URL = '';
+        const WEB_APP_STORAGE_KEY = 'driving_school_web_app_url';
+        const SHEET_STORAGE_KEY = 'driving_school_sheet_url';
 
-        function switchLanguage(lang) {
-            console.log('Switching to:', lang);
-            currentLang = lang;
-            
-            // Update button states
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            if (lang === 'en') {
-                document.getElementById('btn-en').classList.add('active');
+        let allStudents = [];
+        let allPayments = [];
+        let currentTab = 'students';
+
+        // --- Configuration & Initialization Functions ---
+
+        function loadConfig() {
+            WEB_APP_URL = localStorage.getItem(WEB_APP_STORAGE_KEY) || '';
+            SHEET_URL = localStorage.getItem(SHEET_STORAGE_KEY) || '';
+
+            // Check if both URLs are configured.
+            if (!WEB_APP_URL || !SHEET_URL) {
+                showStatus("CRITICAL ERROR: Please set both Web App and Sheet URLs in Configuration.", 'error');
+                // Set default display state if config is missing
+                document.getElementById('student-list-body').innerHTML = '<tr><td colspan="6" class="text-center py-4 text-red-500">Please configure the URLs in Settings to load data.</td></tr>';
             } else {
-                document.getElementById('btn-ms').classList.add('active');
+                 // Clear the status message if valid URLs are loaded
+                 document.getElementById('status-message').classList.add('-translate-y-full');
+                 // Attempt to load data if configuration is present
+                 fetchStudents();
+            }
+        }
+        
+        function saveConfig(webAppUrl, sheetUrl) {
+            localStorage.setItem(WEB_APP_STORAGE_KEY, webAppUrl);
+            localStorage.setItem(SHEET_STORAGE_KEY, sheetUrl);
+            WEB_APP_URL = webAppUrl;
+            SHEET_URL = sheetUrl;
+            showStatus("Configuration saved successfully! Loading data...", 'success');
+        }
+
+        document.getElementById('settings-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const webAppUrl = document.getElementById('webAppUrl').value.trim();
+            const sheetUrl = document.getElementById('sheetUrl').value.trim();
+
+            if (webAppUrl && sheetUrl) {
+                saveConfig(webAppUrl, sheetUrl);
+                closeModal('settingsModal');
+                // Reload data after saving new configuration
+                fetchStudents();
+            } else {
+                showStatus("Please enter both valid URLs.", 'error');
+            }
+        });
+
+        // --- Utility Functions ---
+
+        function showStatus(message, type = 'success') {
+            const statusEl = document.getElementById('status-message');
+            statusEl.textContent = message;
+
+            // Remove existing colors and add new one
+            statusEl.classList.remove('bg-red-500', 'bg-green-500', 'bg-blue-500', 'text-white');
+            
+            if (type === 'success') {
+                statusEl.classList.add('bg-green-500', 'text-white');
+            } else if (type === 'error') {
+                statusEl.classList.add('bg-red-500', 'text-white');
+            } else {
+                statusEl.classList.add('bg-blue-500', 'text-white');
             }
 
-            // Update all text elements
-            document.querySelectorAll('[data-lang-en]').forEach(element => {
-                const newText = element.getAttribute('data-lang-' + lang);
-                if (newText) {
-                    // Check if element contains an icon
-                    const icon = element.querySelector('i[data-lucide]');
-                    if (icon) {
-                        // Store icon info
-                        const iconName = icon.getAttribute('data-lucide');
-                        const iconSize = icon.getAttribute('width') || '24';
-                        // Update with new text and recreate icon
-                        element.innerHTML = '<i data-lucide="' + iconName + '" width="' + iconSize + '" height="' + iconSize + '"></i> ' + newText;
-                    } else {
-                        element.textContent = newText;
-                    }
-                }
-            });
+            // Show and then hide
+            statusEl.classList.remove('-translate-y-full');
+            statusEl.classList.add('translate-y-0');
 
-            // Update form placeholders
-            document.querySelectorAll('input, textarea').forEach(element => {
-                const placeholderAttr = 'data-lang-' + lang + '-placeholder';
-                const newPlaceholder = element.getAttribute(placeholderAttr);
-                if (newPlaceholder) {
-                    element.placeholder = newPlaceholder;
-                }
-            });
+            setTimeout(() => {
+                statusEl.classList.remove('translate-y-0');
+                statusEl.classList.add('-translate-y-full');
+            }, 5000);
+        }
 
-            // Update select dropdown first option
-            const selectElement = document.getElementById('license-select');
-            if (selectElement) {
-                const firstOption = selectElement.querySelector('option[value=""]');
-                if (firstOption) {
-                    const selectText = firstOption.getAttribute('data-lang-' + lang);
-                    if (selectText) {
-                        firstOption.textContent = selectText;
-                    }
-                }
-            }
-
-            // Re-initialize Lucide icons
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+            document.getElementById(id).classList.add('flex');
+            
+            if (id === 'addPaymentModal') {
+                populateStudentSelect();
+            } else if (id === 'settingsModal') {
+                document.getElementById('webAppUrl').value = WEB_APP_URL;
+                document.getElementById('sheetUrl').value = SHEET_URL;
             }
         }
 
-        // Wait for DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Initialize Lucide icons
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+            document.getElementById(id).classList.remove('flex');
+            if (id === 'addStudentModal') {
+                document.getElementById('add-student-form').reset();
             }
+            if (id === 'addPaymentModal') {
+                document.getElementById('add-payment-form').reset();
+                document.getElementById('payment-balance-info').classList.add('hidden');
+            }
+            if (id === 'receiptModal') {
+                document.getElementById('receipt-iframe').src = '';
+            }
+        }
 
-            // Add event listeners to language buttons
-            const btnEn = document.getElementById('btn-en');
-            const btnMs = document.getElementById('btn-ms');
+        function changeTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`tab-${tab}`).classList.add('active');
             
-            if (btnEn) {
-                btnEn.addEventListener('click', function() {
-                    switchLanguage('en');
-                });
-            }
+            document.getElementById('content-students').classList.add('hidden');
+            document.getElementById('content-payments').classList.add('hidden');
+            document.getElementById(`content-${tab}`).classList.remove('hidden');
 
-            if (btnMs) {
-                btnMs.addEventListener('click', function() {
-                    switchLanguage('ms');
-                });
+            // Refresh data when switching tabs
+            if (tab === 'payments') {
+                fetchPayments();
+            } else {
+                fetchStudents();
             }
+        }
 
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
+
+        // --- Data Fetching ---
+
+        async function postData(data) {
+            if (!WEB_APP_URL || !SHEET_URL) {
+                showStatus("CONNECTION ERROR: Web App or Sheet URL is missing. Please go to Configuration.", 'error');
+                return { success: false, message: 'Apps Script URL not configured.' };
+            }
+            
+            // NOTE: We don't need to send the Sheet URL anymore, as the Apps Script is configured
+            // with SPREADSHEET_ID internally. This simplifies the payload.
+            // data.sheetUrl = SHEET_URL; // REMOVED
+
+            try {
+                const response = await fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data),
+                    // Adding a no-cache header can help ensure the latest version of the script runs
+                    'Cache-Control': 'no-cache, no-store, must-revalidate'
+                });
+                
+                // Get the raw text response
+                const text = await response.text();
+                
+                // CRITICAL CHECK: If the text is empty or the response status is not successful, throw an error
+                if (!response.ok || !text) {
+                     // Try to get a helpful message from the text, otherwise use status
+                     const errorMessage = text.substring(0, 100) || `HTTP Error ${response.status} ${response.statusText}`;
+                     throw new Error(`Apps Script did not return a valid response. Check deployment status. ${errorMessage}`);
+                }
+                
+                // Try to parse the text as JSON
+                let jsonResponse;
+                try {
+                    jsonResponse = JSON.parse(text);
+                } catch (e) {
+                    console.error('Failed to parse JSON:', text);
+                    throw new Error('Invalid JSON response from server. Check script execution log for errors.');
+                }
+                
+                return jsonResponse;
+
+            } catch (error) {
+                console.error('Error in postData:', error);
+                // The error could be a network fetch error, or one thrown by our checks above
+                showStatus(`Error connecting/processing: ${error.message}. Check Apps Script Logs.`, 'error');
+                throw error; 
+            }
+        }
+        
+        function updateStudentTable(message) {
+             const tableBody = document.getElementById('student-list-body');
+             tableBody.innerHTML = `<tr><td colspan="6" class="text-center py-4 text-gray-500">${message}</td></tr>`;
+        }
+
+        async function fetchStudents() {
+            updateStudentTable('Loading students...');
+            // Check config again before making the fetch
+            if (!WEB_APP_URL || !SHEET_URL) return; 
+
+            try {
+                const response = await postData({ action: 'fetch_students' });
+                // Check for the success flag returned by the Apps Script JSON response
+                if (response.success) {
+                    allStudents = response.students || [];
+                    // Fetch payments next to calculate balances
+                    await fetchPayments(true); 
+                    renderStudentList(allStudents);
+                    showStatus("Student data synchronized.", 'success');
+                } else {
+                    // Handle logical errors returned by the Apps Script
+                    showStatus(response.message, 'error');
+                    updateStudentTable(`Error fetching data: ${response.message}`);
+                }
+            } catch (error) {
+                 // Catch network/parsing errors which are already shown via showStatus in postData
+                 if (WEB_APP_URL && SHEET_URL) {
+                    // Only update table if configuration exists, otherwise the loadConfig message remains
+                    updateStudentTable('Failed to load data. Please check your Apps Script URL, Deployment, and Sharing settings.');
+                 }
+            }
+        }
+        
+        function updatePaymentTable(message) {
+             const tableBody = document.getElementById('payment-list-body');
+             tableBody.innerHTML = `<tr><td colspan="6" class="text-center py-4 text-gray-500">${message}</td></tr>`;
+        }
+
+        async function fetchPayments(silent = false) {
+            if (!silent) updatePaymentTable('Loading payments...');
+            if (!WEB_APP_URL || !SHEET_URL) return; // Check config again
+
+            try {
+                const response = await postData({ action: 'fetch_payments' });
+                if (response.success) {
+                    allPayments = response.payments || [];
+                    if (currentTab === 'payments' && !silent) {
+                        renderPaymentList(allPayments);
+                        showStatus("Payment data synchronized.", 'success');
                     }
-                });
+                } else {
+                    if (!silent) {
+                        showStatus(`Error fetching payments: ${response.message}`, 'error');
+                        updatePaymentTable(`Error fetching data: ${response.message}`);
+                    }
+                }
+                
+            } catch (error) {
+                if (!silent) updatePaymentTable('Could not connect to server.');
+                allPayments = []; 
+            }
+        }
+
+
+        // --- Rendering ---
+        
+        function calculateBalance(studentId, totalFee) {
+            const paymentsForStudent = allPayments.filter(p => String(p.studentId) === String(studentId));
+            const totalPaid = paymentsForStudent.reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+            return (parseFloat(totalFee) || 0) - totalPaid;
+        }
+
+
+        function renderStudentList(students) {
+            const tableBody = document.getElementById('student-list-body');
+            tableBody.innerHTML = '';
+
+            if (students.length === 0) {
+                updateStudentTable('No students found.');
+                return;
+            }
+
+            students.forEach(student => {
+                // Ensure field names match the Apps Script output (fullName, not just name)
+                const studentName = student.fullName || 'N/A'; 
+                const totalFee = parseFloat(student.totalFee) || 0;
+                
+                const balance = calculateBalance(student.id, totalFee); 
+                const balanceDisplay = balance <= 0 ? `<span class="text-green-600 font-semibold">Paid</span>` : `<span class="text-red-600 font-semibold">RM ${balance.toFixed(2)}</span>`;
+                
+                const row = `
+                    <tr class="hover:bg-gray-50 transition duration-150">
+                        <td class="p-4 whitespace-nowrap">${student.id || 'N/A'}</td>
+                        <td class="p-4 whitespace-nowrap">${studentName}</td>
+                        <td class="p-4 whitespace-nowrap">${student.phoneNumber || 'N/A'}</td>
+                        <td class="p-4 whitespace-nowrap">${student.courseType || 'N/A'}</td>
+                        <td class="p-4 whitespace-nowrap">RM ${totalFee.toFixed(2)}</td>
+                        <td class="p-4 whitespace-nowrap">${balanceDisplay}</td>
+                    </tr>
+                `;
+                tableBody.insertAdjacentHTML('beforeend', row);
+            });
+        }
+
+        function renderPaymentList(payments) {
+            const tableBody = document.getElementById('payment-list-body');
+            tableBody.innerHTML = '';
+
+            if (payments.length === 0) {
+                updatePaymentTable('No payments recorded.');
+                return;
+            }
+
+            payments.forEach(payment => {
+                const student = allStudents.find(s => String(s.id) === String(payment.studentId));
+                const studentName = student ? (student.fullName || 'Unknown Student') : 'Unknown Student';
+                // Use receiptUrl consistently from the Apps Script response
+                const receiptUrl = payment.receiptUrl || ''; 
+                
+                const actionButton = receiptUrl && !receiptUrl.startsWith('Error') && !receiptUrl.startsWith('Receipt generation skipped') ? 
+                    `<button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-3 rounded-lg text-sm transition duration-150" onclick="viewReceipt('${receiptUrl}')">View Receipt</button>` :
+                    `<span class="text-red-500 text-sm">${receiptUrl.startsWith('Error') ? 'Receipt Failed' : 'N/A'}</span>`;
+
+                const amountDisplay = `RM ${(parseFloat(payment.amount) || 0).toFixed(2)}`;
+
+                const row = `
+                    <tr class="hover:bg-gray-50 transition duration-150">
+                        <td class="p-4 whitespace-nowrap">${payment.paymentId || 'N/A'}</td>
+                        <td class="p-4 whitespace-nowrap">${studentName}</td>
+                        <td class="p-4 whitespace-nowrap">${payment.date || 'N/A'}</td>
+                        <td class="p-4 whitespace-nowrap text-green-600 font-semibold">${amountDisplay}</td>
+                        <td class="p-4 whitespace-nowrap">${payment.method || 'N/A'}</td>
+                        <td class="p-4 whitespace-nowrap">${actionButton}</td>
+                    </tr>
+                `;
+                tableBody.insertAdjacentHTML('beforeend', row);
+            });
+        }
+        
+        function populateStudentSelect() {
+            const select = document.getElementById('studentIdOrName');
+            select.innerHTML = '<option value="" disabled selected>Select a Student...</option>';
+            const balanceInfo = document.getElementById('payment-balance-info');
+            balanceInfo.classList.add('hidden');
+            
+            allStudents.forEach(student => {
+                const studentName = student.fullName || 'Student Name Missing';
+                const studentId = student.id || 'N/A';
+                const optionText = `${studentName} (ID: ${studentId})`;
+                const option = new Option(optionText, studentId);
+                option.setAttribute('data-total-fee', student.totalFee);
+                select.add(option);
             });
 
-            // License selection functionality
-            document.querySelectorAll('.btn-license').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const licenseType = this.getAttribute('data-license');
-                    const selectElement = document.getElementById('license-select');
+            // Add listener to update balance info
+            select.onchange = function() {
+                const selectedId = this.value;
+                const student = allStudents.find(s => String(s.id) === String(selectedId));
+                if (student) {
+                    const totalFee = parseFloat(student.totalFee) || 0;
+                    const balance = calculateBalance(student.id, totalFee);
                     
-                    if (licenseType && selectElement) {
-                        // Set the dropdown value
-                        selectElement.value = licenseType;
-                        
-                        // Scroll to contact section
-                        const contactSection = document.getElementById('contact');
-                        if (contactSection) {
-                            contactSection.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                        }
-                        
-                        // Optional: Add a brief highlight effect to the dropdown
-                        selectElement.style.borderColor = '#3b82f6';
-                        selectElement.style.boxShadow = '0 0 0 3px rgba(59, 130, 246, 0.2)';
-                        setTimeout(() => {
-                            selectElement.style.borderColor = '#e2e8f0';
-                            selectElement.style.boxShadow = 'none';
-                        }, 1500);
-                    }
-                });
-            });
+                    balanceInfo.textContent = `Total Fee: RM ${totalFee.toFixed(2)} | Current Balance Due: RM ${balance.toFixed(2)}`;
+                    balanceInfo.classList.remove('hidden');
 
-            // Form submission handler
-            const form = document.querySelector('form');
-            if (form) {
-                form.addEventListener('submit', function(e) {
-                    // Formspree will handle the submission
-                    // Show a loading state or confirmation message
-                    const submitBtn = form.querySelector('button[type="submit"]');
-                    const originalText = submitBtn.querySelector('span').textContent;
-                    submitBtn.querySelector('span').textContent = currentLang === 'en' ? 'Sending...' : 'Menghantar...';
-                    submitBtn.disabled = true;
-                });
+                    if (balance <= 0) {
+                        balanceInfo.classList.add('text-green-600');
+                        balance.classList.remove('text-red-600');
+                    } else {
+                        balanceInfo.classList.add('text-red-600');
+                        balanceInfo.classList.remove('text-green-600');
+                    }
+                }
+            }
+        }
+
+        function viewReceipt(url) {
+            document.getElementById('receipt-iframe').src = url;
+            openModal('receiptModal');
+        }
+
+
+        // --- Form Submissions ---
+
+        document.getElementById('add-student-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('add-student-submit');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Adding...';
+
+            const formData = Object.fromEntries(new FormData(e.target).entries());
+            formData.action = 'add_student';
+
+            try {
+                const response = await postData(formData);
+                if (response.success) {
+                    showStatus(response.message);
+                    closeModal('addStudentModal');
+                    await fetchStudents();
+                } else {
+                    showStatus(response.message, 'error');
+                }
+            } catch (error) {
+                // Handled in postData
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Add Student';
             }
         });
+
+        document.getElementById('add-payment-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('add-payment-submit');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Recording Payment...';
+
+            const formData = Object.fromEntries(new FormData(e.target).entries());
+            formData.action = 'add_payment';
+            
+            // Convert date to YYYY-MM-DD format for Apps Script
+            const dateInput = document.getElementById('paymentDate').value;
+            formData.date = dateInput; 
+
+            try {
+                const response = await postData(formData);
+                if (response.success) {
+                    showStatus(response.message);
+                    closeModal('addPaymentModal');
+                    // Refresh both lists
+                    await fetchStudents(); 
+                    if (response.receiptUrl && !response.receiptUrl.startsWith('Error')) {
+                        viewReceipt(response.receiptUrl);
+                    }
+                } else {
+                    showStatus(response.message, 'error');
+                }
+            } catch (error) {
+                // Handled in postData
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Record New Payment & Generate Receipt';
+            }
+        });
+
+        // --- Filtering/Search ---
+
+        function filterStudents() {
+            const query = document.getElementById('student-search').value.toLowerCase();
+            const filtered = allStudents.filter(student => 
+                String(student.id || '').toLowerCase().includes(query) || 
+                String(student.fullName || '').toLowerCase().includes(query)
+            );
+            renderStudentList(filtered);
+        }
+
+        function filterPayments() {
+            const query = document.getElementById('payment-search').value.toLowerCase();
+            
+            const filteredPayments = allPayments.filter(payment => {
+                const student = allStudents.find(s => String(s.id) === String(payment.studentId));
+                const studentName = student ? (student.fullName || 'Unknown Student') : 'Unknown Student';
+                
+                return String(payment.paymentId || '').toLowerCase().includes(query) ||
+                       String(payment.studentId || '').toLowerCase().includes(query) ||
+                       studentName.toLowerCase().includes(query);
+            });
+            renderPaymentList(filteredPayments);
+        }
+
+        // --- Initialization ---
+
+        window.onload = function() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('paymentDate').value = today;
+
+            // 1. Load configuration (Apps Script URL and Sheet URL)
+            loadConfig();
+            
+            // Data loading is initiated inside loadConfig if URLs are present
+        }
     </script>
 </body>
 </html>
